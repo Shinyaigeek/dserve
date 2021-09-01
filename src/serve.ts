@@ -1,4 +1,5 @@
 import { Application } from "../packages.ts";
+import { path } from "../packages.ts";
 
 export interface ServeOptions {
   dir: string;
@@ -12,9 +13,10 @@ export const serve: (op: ServeOptions) => void = function ({
   port,
 }) {
   const app = new Application();
-  console.log(dir);
 
-  app.static("/", "/").start({ port });
+  app.static("/", dir).start({ port });
 
-  console.log(`Serving path ${dir} at http://localhost:${port}`);
+  const absDir = path.join(Deno.cwd(), dir);
+
+  console.log(`Serving path ${absDir} at http://localhost:${port}`);
 };
