@@ -6,7 +6,10 @@ import { dirHandler } from "./dirHandler.ts";
 export interface ServeOptions {
   dir: string;
   port: number;
-  index: string;
+  index?: string;
+  tlsCert?: string;
+  tlsKey?: string;
+  title: string;
 }
 
 export const serve: (op: ServeOptions) => void = function ({
@@ -43,5 +46,5 @@ export const serve: (op: ServeOptions) => void = function ({
 
   const absDir = path.join(Deno.cwd(), dir);
 
-  console.log(`Serving path ${absDir} at http://localhost:${port}`);
+  console.log(`Serving path ${absDir} at https://localhost:${port}`);
 };
