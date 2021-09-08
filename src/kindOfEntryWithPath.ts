@@ -3,7 +3,7 @@ export const kindOfEntryWithPath: (
 ) => Promise<"dir" | "file" | "404"> = async function (path) {
   const isFile = await (async () => {
     try {
-      Deno.readFile(path);
+      await Deno.readFile(path);
       return true;
     } catch (_) {
       return false;
@@ -16,7 +16,7 @@ export const kindOfEntryWithPath: (
 
   const isDir = await (async () => {
     try {
-      Deno.readDir(path);
+      await Deno.readDir(path);
       return true;
     } catch (_) {
       return false;
