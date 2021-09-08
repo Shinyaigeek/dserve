@@ -22,6 +22,14 @@ export const serve: (op: ServeOptions) => void = function ({
     .get("/*", async (req) => {
       const target = targetPath + req.url.pathname.replace("/", "");
 
+      if (target.endsWith("favicon.ico")) {
+        const faviconPath = path.join(
+          path.dirname(path.fromFileUrl(import.meta.url)),
+          "./favicon.ico"
+        );
+        return await Deno.readFile(faviconPath);
+      }
+
       const pathState = await kindOfEntryWithPath(target);
       if (pathState === "file") {
         return await Deno.readTextFile(target);
