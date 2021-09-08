@@ -16,7 +16,7 @@ export const kindOfEntryWithPath: (
 
   const isDir = await (async () => {
     try {
-      await Deno.readDir(path);
+      Deno.readDirSync(path);
       return true;
     } catch (_) {
       return false;
