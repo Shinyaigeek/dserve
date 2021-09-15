@@ -1,4 +1,4 @@
-import { version } from "./version.ts"
+import { version } from "./version.ts";
 
 export const layout: (body: string, title?: string) => string = function (
   body,

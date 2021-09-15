@@ -9,7 +9,7 @@ const main = function () {
       p: "port",
       h: "help",
       t: "title",
-      i: "index"
+      i: "index",
     },
   });
 
