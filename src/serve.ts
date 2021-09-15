@@ -16,19 +16,22 @@ export const serve: (op: ServeOptions) => void = function ({
   dir,
   index,
   port,
+  tlsCert,
+  tlsKey,
+  title,
 }) {
-  const app = new Application();
+  const _app = new Application();
 
   const targetPath = path.join(Deno.cwd(), dir);
 
-  app
+  const app = _app
     .get("/*", async (req) => {
       const target = targetPath + req.url.pathname.replace("/", "");
 
       if (target.endsWith("favicon.ico")) {
         const faviconPath = path.join(
           path.dirname(path.fromFileUrl(import.meta.url)),
-          "./favicon.ico"
+          "./favicon.ico",
         );
         return await Deno.readFile(faviconPath);
       }
@@ -41,10 +44,17 @@ export const serve: (op: ServeOptions) => void = function ({
       } else {
         return "404";
       }
-    })
-    .start({ port });
+    });
+
+  if (tlsCert && tlsKey) {
+    app.startTLS({ port, certFile: tlsCert, keyFile: tlsKey });
+  }else{
+    app.start({ port });
+  }
+
+  const scheme = tlsCert && tlsKey ? "https" : "http";
 
   const absDir = path.join(Deno.cwd(), dir);
 
-  console.log(`Serving path ${absDir} at https://localhost:${port}`);
+  console.log(`Serving path ${absDir} at ${scheme}://localhost:${port}`);
 };
