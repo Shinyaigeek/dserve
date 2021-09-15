@@ -2,6 +2,7 @@ import { Application } from "../packages.ts";
 import { path } from "../packages.ts";
 import { kindOfEntryWithPath } from "./kindOfEntryWithPath.ts";
 import { dirHandler } from "./dirHandler.ts";
+import { layout } from "./layout.ts";
 
 export interface ServeOptions {
   dir: string;
@@ -40,7 +41,7 @@ export const serve: (op: ServeOptions) => void = function ({
       if (pathState === "file") {
         return await Deno.readTextFile(target);
       } else if (pathState === "dir") {
-        return await dirHandler(target);
+        return layout(await dirHandler(target));
       } else {
         return "404";
       }
@@ -48,7 +49,7 @@ export const serve: (op: ServeOptions) => void = function ({
 
   if (tlsCert && tlsKey) {
     app.startTLS({ port, certFile: tlsCert, keyFile: tlsKey });
-  }else{
+  } else {
     app.start({ port });
   }
 
