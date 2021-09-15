@@ -23,7 +23,7 @@ const main = function () {
     "tls-key": tlsKey,
     help,
     title = "dserve",
-    version,
+    version: showVersion,
   } = args;
 
   if (help) {
@@ -57,7 +57,7 @@ ${color.yellow("Args")}
     return;
   }
 
-  if (version) {
+  if (showVersion) {
     console.log(`dserve@${version}`);
     return;
   }
