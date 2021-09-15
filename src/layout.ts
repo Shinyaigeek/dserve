@@ -8,6 +8,12 @@ export const layout: (body: string, title?: string) => string = function (
 <title>${title}</title>
 </head>
 <body>
+<header></header>
 ${body}
-</body>`;
+</body>
+<script>
+const header = document.querySelector("header");
+header.innerText = "dserve " + window.location.href;
+</script>
+</html>`;
 };
