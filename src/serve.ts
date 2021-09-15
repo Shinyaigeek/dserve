@@ -41,9 +41,9 @@ export const serve: (op: ServeOptions) => void = function ({
       if (pathState === "file") {
         return await Deno.readTextFile(target);
       } else if (pathState === "dir") {
-        return layout(await dirHandler(target));
+        return layout(await dirHandler(target), title);
       } else {
-        return "404";
+        return layout("404", title);
       }
     });
 
