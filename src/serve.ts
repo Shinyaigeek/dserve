@@ -1,5 +1,6 @@
 import { Application } from "../packages.ts";
 import { path } from "../packages.ts";
+import { color } from "../packages.ts";
 import { kindOfEntryWithPath } from "./kindOfEntryWithPath.ts";
 import { dirHandler } from "./dirHandler.ts";
 import { layout } from "./layout.ts";
@@ -57,7 +58,9 @@ export const serve: (op: ServeOptions) => void = function ({
 
   const absDir = path.join(Deno.cwd(), dir);
 
-  console.log(`Serving path ${absDir} at ${scheme}://localhost:${port}`);
+  console.log(
+    `Serving path ${absDir} at ${color.green(`${scheme}://localhost:${port}`)}`,
+  );
   // break line
   console.log("");
   console.log("Quit by pressing CTRL-C");
