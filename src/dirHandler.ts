@@ -1,5 +1,5 @@
 export const dirHandler: (dir: string) => Promise<string> = async function (
-  dir
+  dir,
 ) {
   const directories = Deno.readDir(dir);
 

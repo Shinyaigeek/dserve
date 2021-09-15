@@ -1,5 +1,5 @@
 export const kindOfEntryWithPath: (
-  path: string
+  path: string,
 ) => Promise<"dir" | "file" | "404"> = async function (path) {
   const isFile = await (async () => {
     try {
