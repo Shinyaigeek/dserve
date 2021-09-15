@@ -10,6 +10,7 @@ const main = function () {
       h: "help",
       t: "title",
       i: "index",
+      v: "version",
     },
   });
 
@@ -22,6 +23,7 @@ const main = function () {
     "tls-key": tlsKey,
     help,
     title = "dserve",
+    version,
   } = args;
 
   if (help) {
@@ -52,6 +54,11 @@ ${color.yellow("Args")}
     ${color.green("<Path>")}
         Path to serve. default "."
 `);
+    return;
+  }
+
+  if (version) {
+    console.log(`dserve@${version}`);
     return;
   }
 

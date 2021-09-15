@@ -32,7 +32,9 @@ export const serve: (op: ServeOptions) => void = function ({
 
       if (target.endsWith("favicon.ico")) {
         const faviconPath = path.join(
-          path.dirname(path.fromFileUrl(import.meta.url)),
+          import.meta.url.startsWith("https")
+            ? import.meta.url
+            : path.dirname(path.fromFileUrl(import.meta.url)),
           "./favicon.ico",
         );
         return await Deno.readFile(faviconPath);
