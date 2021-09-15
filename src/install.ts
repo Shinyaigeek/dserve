@@ -37,7 +37,7 @@ const install: (_version?: string) => Promise<void> = async function (
       "-n",
       "dserve",
       "-f",
-      `https://deno.land/x/dserve@${version}/main.ts`,
+      `https://deno.land/x/dserve@${version}/src/main.ts`,
     ],
     stdout: "null",
     stderr: "inherit",
