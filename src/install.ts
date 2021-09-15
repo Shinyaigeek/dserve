@@ -1,13 +1,28 @@
 import { path } from "../packages.ts";
 import { fs } from "../packages.ts";
+import { color } from "../packages.ts";
 
-const install: (version?: string) => Promise<void> = async function (
-  version = "latest",
+const install: (_version?: string) => Promise<void> = async function (
+  _version = "latest",
 ) {
   const denoExecPath = Deno.execPath();
   const cmdExists = fs.existsSync(
     path.join(path.dirname(denoExecPath), "dserve"),
   );
+
+  const versionMetaUrl = "https://cdn.deno.land/dserve/meta/versions.json";
+  const { latest, versions } = await (await fetch(versionMetaUrl)).json();
+
+  const version: string = (() => {
+    if (_version === "latest") {
+      return latest;
+    } else if (!versions.includes(_version)) {
+      console.log(`${color.red("error")}: version(${_version}) not found!`);
+      Deno.exit(1);
+    } else {
+      return _version;
+    }
+  })();
 
   const p = Deno.run({
     cmd: [
