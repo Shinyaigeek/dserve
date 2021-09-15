@@ -58,6 +58,7 @@ export const serve: (op: ServeOptions) => void = function ({
   const absDir = path.join(Deno.cwd(), dir);
 
   console.log(`Serving path ${absDir} at ${scheme}://localhost:${port}`);
-
+  // break line
+  console.log("");
   console.log("Quit by pressing CTRL-C");
 };
