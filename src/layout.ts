@@ -1,3 +1,5 @@
+import { version } from "./version.ts"
+
 export const layout: (body: string, title?: string) => string = function (
   body,
   title = "dserve",
@@ -15,7 +17,7 @@ ${body}
 </body>
 <script>
 const header = document.querySelector("header");
-header.innerText = "dserve " + window.location.href;
+header.innerText = "dserve@${version} " + window.location.href;
 </script>
 <style>
 header {

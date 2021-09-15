@@ -1,6 +1,7 @@
 import { flags } from "../packages.ts";
 import { serve } from "./serve.ts";
 import { color } from "../packages.ts";
+import { version } from "./version.ts";
 
 const main = function () {
   const args = flags.parse(Deno.args, {
@@ -25,7 +26,7 @@ const main = function () {
 
   if (help) {
     console.log(`
-${color.green("dserve")}
+${color.green("dserve")}@${version}
 Developed by Shinobu Hayashi/Shinyaigeek <me@shinyaigeek.dev>
 
 ${color.yellow("Usage")}
