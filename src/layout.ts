@@ -20,6 +20,11 @@ const header = document.querySelector("header");
 header.innerText = "dserve@${version} " + window.location.href;
 </script>
 <style>
+body {
+  background: #58555A;
+  color: #FFFFFF;
+}
+
 header {
   width: 100vw;
   position: fixed;
