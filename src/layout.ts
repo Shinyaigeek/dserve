@@ -18,6 +18,16 @@ ${body}
 <script>
 const header = document.querySelector("header");
 header.innerText = "dserve@${version} " + window.location.href;
+
+const listHeader = document.getElementById("header");
+if (window.location.pathname.length > 1) {
+  const link = document.createElement("a");
+  link.href = "../";
+  link.innerText = "Parent Directory";
+  const li = document.createElement("li");
+  li.appendChild(link);
+  listHeader.after(li);
+}
 </script>
 <style>
 body {
