@@ -34,6 +34,36 @@ header {
   height: 28px;
 }
 
+li {
+  list-style: none;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+ul {
+  width: 80vw;
+  margin: 12px auto;
+}
+
+li span {
+  display: inline-block;
+}
+
+li .name {
+  width: 60%;
+}
+
+li .size {
+  width: 20%;
+}
+
+li .last-modified {
+  width: 20%;
+}
+
 #app {
   position: absolute;
   top: 28px;
