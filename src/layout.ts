@@ -25,6 +25,7 @@ if (window.location.pathname.length > 1) {
   link.href = "../";
   link.innerText = "Parent Directory";
   const li = document.createElement("li");
+  li.className = "goto-parent";
   li.appendChild(link);
   listHeader.after(li);
 }
@@ -56,6 +57,7 @@ a {
 ul {
   width: 80vw;
   margin: 12px auto;
+  font-size: 18px;
 }
 
 li span {
@@ -72,6 +74,14 @@ li .size {
 
 li .last-modified {
   width: 20%;
+}
+
+.directory-header {
+  font-size: 24px;
+}
+
+.goto-parent {
+  font-size: 24px;
 }
 
 #app {
