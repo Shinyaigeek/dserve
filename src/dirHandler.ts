@@ -26,4 +26,5 @@ export const dirHandler: (dir: string) => Promise<string> = async function (
   return `<ul>${templates.join("")}</ul>`;
 };
 
-const header = `<li class="directory-header" id="header"></li>`;
+const header =
+  `<li class="directory-header" id="header"><span class="name">name</span><span class="size">size</span><span class="last-modified">last-modified</span></li>`;
