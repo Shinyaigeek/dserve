@@ -6,9 +6,11 @@ export const dirHandler: (dir: string) => Promise<string> = async function (
   const templates: string[] = [];
 
   for await (const entry of directories) {
-    const template = (() => {
+    const template = await (async () => {
       if (entry.isFile) {
-        return `<li><a href="./${entry.name}">${entry.name}</a></li>`;
+        const fileStat = await Deno.stat(`${dir}/${entry.name}`);
+        return `<li><a href="./${entry.name}">${entry.name}</a>${fileStat.size}B ${fileStat
+          .mtime?.toLocaleString() ?? ""}</li>`;
       } else if (entry.isDirectory) {
         return `<li><a href="./${entry.name}/">${entry.name}</a></li>`;
       } else {
