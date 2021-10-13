@@ -32,8 +32,8 @@ if (window.location.pathname.length > 1) {
 </script>
 <style>
 body {
-  background: #58555A;
-  color: #FFFFFF;
+  background: rgb(249,250,251);
+  color: #000000;
 }
 
 header {
@@ -47,21 +47,33 @@ header {
 
 li {
   list-style: none;
+  background: #ffffff;
+  border-color: #e5e7eb;
+  border-style: solid;
+  border-width: 1px;
+  padding: 3px 2px;
 }
 
 a {
-  color: #FFFFFF;
+  color: #3f83f8;
   text-decoration: none;
 }
 
 ul {
   width: 80vw;
-  margin: 12px auto;
+  margin: 36px auto;
   font-size: 18px;
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
 }
 
 li span {
   display: inline-block;
+}
+
+li:hover {
+  background: #f4f5f7;
 }
 
 li .name {
@@ -78,6 +90,7 @@ li .last-modified {
 
 .directory-header {
   font-size: 24px;
+  background: rgb(229,231,235);
 }
 
 .goto-parent {
@@ -85,8 +98,9 @@ li .last-modified {
 }
 
 #app {
-  position: absolute;
-  top: 28px;
+  width: 100%;
+  margin: 56px auto;
+  padding: 0;
 }
 </style>
 </html>`;
